@@ -1,3 +1,9 @@
+## Description
+
+This track is like the session of electronics sounds and Japanese traditional sounds.
+All sequences and samples are manipulated by TidalCycles on realtime livecoding.
+All electronics sounds are made by SuperCollider.
+
 ## Requirements
 
 - [SuperCollider](https://github.com/supercollider/supercollider)
@@ -6,7 +12,7 @@
 
 ## Samples
 
-```sh
+```shell
 ├── biwa
 │   ├── Biwa_(1).wav
 │   ├── Biwa21_st.wav
