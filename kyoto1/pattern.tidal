@@ -1,0 +1,23 @@
+do
+  let del = delay (range 0.2 0.98 rand) # delayfb (range 0.6 0.95 rand) # delayt (choose [1/3,1/4,1/6,1/8,1/16,1/24,1/32,1/48,1/96] * choose [1,1/3,1/6,1/8,1/12])
+      fst x = spreadr fast (map (*x) [1.75,1,1.25,1.5,0.5,0.75])
+      lng = spreadr linger [0.2,0.25,0.3,0.5,0.6,0.75,1]
+      chk x = chunk x (iter 6)
+      msk = spreadr mask ["t", "t", "t ~", "~ t", "t", "t ~ t ~", "t ~ ~ t", "~ t ~ t"]
+  let beat = spreadr slow [0.25,0.5,0.75,1,1.5,2,2.5,3,3.5] $ sometimesBy 0.6 (iter 8) $ s "<sbd(3,8), ssn/3?, sfm(12,16,3), shh(6,8)>" # n (irand 32) # pan rand # shape (slow 3 $ range 0.3 0.6 rand) # sustain (slow 7 $ range 0.3 1 rand) # crush (range 2 5 rand) # ((2<~) $ fast 12 $ del) # rel (range 0.2 1.5 rand) # orbit 0
+      bass = spreadr slow [2,3,4,6] $ spreadr rot [1,2,3] $ s "sbass(9,16)" # note (choose [0,3,7,11,13]) |+ note (choose [-36]) # rel (range 0.2 3 rand) # shape (range 0.3 0.9 rand) # gain 0.8 # cut 3
+      biwa = sometimesBy 0.3 (spreadr chop [3,4,5,6]) $ spreadr slow [0.75,1,2,3] $ s "biwa*8?" # n (irand 14) # speed (choose [-1,1]) # begin (choose [1/16,2/16..1]) # shape (range 0.3 0.7 rand) # pan rand # room (range 0.1 0.9 rand) # size (range 0.5 0.9 rand) |* gain 1.1 # rel (range 0.5 1 rand) # del # orbit 7 # cut 6
+      shoei = sometimesBy 0.3 (spreadr chop [1,2,3,4]) $ spreadr slow [3,4,5,6] $ s "shoei*16?" # n (irand 8) # speed (choose [-1,1]) # begin (choose [1/32,2/32..1]) # shape (range 0.3 0.7 rand) # pan rand # room (range 0.1 0.9 rand) # size (range 0.5 0.9 rand) |* gain 1.1 # rel (range 0.5 1 rand) # del # orbit 8 # cut 7
+      sho = spreadr slow [0.5,1,2,3] $ degradeBy 0.2 $ s "sho" # n (irand 30) # note (choose [-24,-12,0]) # begin (range 0.1 0.8 rand) # att (range 0.3 0.5 rand) # rel (range 6 12 rand) # shape (slow (range 0.01 7 rand) $ range 0.1 0.2 sine) # gain (slow (range 0.1 0.2 rand) $ range 0.4 0.8 sine) # lpf (slow (range 0.2 4 sine) $ range 3000 12000 sine) # room 0.9 # size 0.8 # orbit 8
+      pat1 = stack [beat, bass, biwa, shoei]
+      pat2 = stack [beat, bass, biwa, shoei, sho]
+      pat3 = stack [slow 3 $ beat, biwa, shoei]
+      cpsrnd = slow (range 0.1 3 rand) $ (range 0.8 1.3 rand)
+  d1 $
+    spreadr rot [1,2,3,4,5,6,7,8] $
+    sometimesBy 0.6 rev $
+    chk 6 $
+    lng $
+    spreadr fst (map (*0.25) [0.5,0.75,1,1.5,2,3]) $
+    degradeBy 0.2 $
+    pat2 # cps(cpsrnd)
