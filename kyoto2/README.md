@@ -1,6 +1,6 @@
 ## Requirements
 
-- SuperCollider
+- [SuperCollider](https://github.com/supercollider/supercollider)
 
 ## Samples
 

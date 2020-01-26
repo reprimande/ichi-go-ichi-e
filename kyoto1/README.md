@@ -1,8 +1,8 @@
 ## Requirements
 
-- SuperCollider
-- SuperDirt
-- TidalCycles
+- [SuperCollider](https://github.com/supercollider/supercollider)
+- [SuperDirt](https://github.com/musikinformatik/SuperDirt)
+- [TidalCycles](https://github.com/tidalcycles/Tidal)
 
 ## Samples
 
