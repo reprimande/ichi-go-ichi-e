@@ -4,6 +4,10 @@ This track is like the session of electronics sounds and Japanese traditional so
 All sequences and samples are manipulated by TidalCycles on realtime livecoding.
 All electronics sounds are made by SuperCollider.
 
+## Track
+
+https://wavefolder.bandcamp.com/track/naoki-nomoto-kyoto1
+
 ## Requirements
 
 - [SuperCollider](https://github.com/supercollider/supercollider)
